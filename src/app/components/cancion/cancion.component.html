@@ -1,0 +1,22 @@
+<h1>{{cancion.name}}</h1>
+<img src= {{cancion.artworkUrl}} >
+<h3>{{cancion.collectionName}}</h3>
+<p>{{cancion.artistName}}</p>
+<p>{{cancion.releaseDate | date:"yyyy"}}</p>
+<p>{{cancion.duration | date:'mm:ss'}}</p>
+<p>
+  <a *ngFor="let genre of cancion.genres; last as isLast">
+    <span
+    class="badge badge-secondary p-2"
+    [ngClass]="!isLast ? 'mr-2' : ''"
+    style="cursor: pointer;"
+    >{{ genre.name }}
+  </span>
+  </a>
+</p>
+<p *ngIf="cancion.contentAdvisoryRating">{{ cancion.contentAdvisoryRating }}</p>
+<p>{{cancion.copyright}}</p>
+
+
+
+
