@@ -1,0 +1,46 @@
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Canción</th>
+      <th>Artista</th>
+      <th>Duración</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- No hay canciones -->
+    <tr *ngIf="canciones?.length == 0">
+      <td colspan="5">No hay canciones para mostrar</td>
+    </tr>
+
+    <!-- Cargando canciones -->
+    <tr *ngIf="!cargado">
+      <td colspan="5">Cargando canciones...</td>
+    </tr>
+    <tr
+      *ngFor="let cancion of canciones; let i = index; first as isFirst"
+      (mouseover)="cancion.showPlayOpt = true"
+      (mouseleave)="cancion.showPlayOpt = false"
+    >
+      <th scope="row">
+        <span *ngIf="!cancion.showPlayOpt">{{ i + 1 }}</span>
+        <span *ngIf="cancion.showPlayOpt">></span>
+      </th>
+      <td>
+        {{ cancion.name }}
+        <span
+          class="badge badge-secondary ml-2"
+          *ngIf="cancion.contentAdvisoryRating"
+          >E</span
+        >
+      </td>
+      <td>{{ cancion.artistName }}</td>
+      <td>
+        {{ cancion.duration | date: "mm:ss" }}
+      </td>
+      <td (click)="mostrarDetalles(cancion)" style="cursor: pointer;">+</td>
+    </tr>
+  </tbody>
+</table>
+<app-cancion *ngIf="detalles" [cancion]="cancionSeleccionada"></app-cancion>
