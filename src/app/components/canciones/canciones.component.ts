@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import listaCanciones from '../../../assets/canciones.json';
 import { Cancion } from '../../models/Cancion';
 // import { faPlay } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +11,7 @@ import { Cancion } from '../../models/Cancion';
 export class CancionesComponent implements OnInit {
   // Propiedades
   canciones: Cancion[];
-  cancionSeleccionada: Cancion;
+  @Output() cancionSeleccionada = new EventEmitter<Cancion>();
   datos: Cancion[] = listaCanciones;
 
   // Estados
@@ -31,7 +31,7 @@ export class CancionesComponent implements OnInit {
 
   // Muestra detalles
   mostrarDetalles(cancion) {
-    this.cancionSeleccionada = cancion;
+    this.cancionSeleccionada.emit(cancion);
     this.detalles = true;
   }
 

@@ -1,1 +1,5 @@
-<app-canciones></app-canciones>
+<app-canciones (cancionSeleccionada)="mostrarDetalles($event)"></app-canciones>
+<app-cancion
+  *ngIf="cancionSeleccionada"
+  [cancion]="cancionSeleccionada"
+></app-cancion>
