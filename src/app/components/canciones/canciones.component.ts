@@ -20,6 +20,8 @@ export class CancionesComponent implements OnInit {
 
   constructor() {}
 
+  cancionFiltrada = '';
+
   ngOnInit() {
     this.cargado = false;
     // Simula un tiempo de carga por consulta http

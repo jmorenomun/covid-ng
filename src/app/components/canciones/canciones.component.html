@@ -1,3 +1,14 @@
+<h2>Filtro canciones</h2>
+<input
+  type="text"
+  name="filtroCanciones"
+  placeholder="Buscar..."
+  [(ngModel)]="cancionFiltrada"
+/>
+<p *ngIf="canciones | filtro: cancionFiltrada">
+  {{ (canciones | filtro: cancionFiltrada).length }} canciones
+</p>
+
 <table>
   <thead>
     <tr>
@@ -10,8 +21,8 @@
   </thead>
   <tbody>
     <!-- No hay canciones -->
-    <tr *ngIf="canciones?.length == 0">
-      <td colspan="5">No hay canciones para mostrar</td>
+    <tr *ngIf="(canciones | filtro: cancionFiltrada)?.length === 0">
+      <td colspan="5">No hay canciones con el título {{ cancionFiltrada }}</td>
     </tr>
 
     <!-- Cargando canciones -->
@@ -19,7 +30,11 @@
       <td colspan="5">Cargando canciones...</td>
     </tr>
     <tr
-      *ngFor="let cancion of canciones; let i = index; first as isFirst"
+      *ngFor="
+        let cancion of canciones | filtro: cancionFiltrada;
+        let i = index;
+        first as isFirst
+      "
       (mouseover)="cancion.showPlayOpt = true"
       (mouseleave)="cancion.showPlayOpt = false"
     >
