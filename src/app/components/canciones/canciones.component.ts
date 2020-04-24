@@ -1,7 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import listaCanciones from '../../../assets/canciones.json';
 import { Cancion } from '../../models/Cancion';
-// import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-canciones',
@@ -11,7 +10,10 @@ import { Cancion } from '../../models/Cancion';
 export class CancionesComponent implements OnInit {
   // Propiedades
   canciones: Cancion[];
+  cancion: Cancion;
+
   @Output() cancionSeleccionada = new EventEmitter<Cancion>();
+
   datos: Cancion[] = listaCanciones;
 
   // Estados
@@ -24,11 +26,8 @@ export class CancionesComponent implements OnInit {
 
   ngOnInit() {
     this.cargado = false;
-    // Simula un tiempo de carga por consulta http
-    setTimeout(() => {
-      this.mostrarTodas();
-      this.cargado = true;
-    }, 1000);
+    this.mostrarTodas();
+    this.cargado = true;
   }
 
   // Muestra detalles
@@ -44,5 +43,15 @@ export class CancionesComponent implements OnInit {
         return cancion;
       }
     });
+  }
+
+  reproducir(cancion: Cancion) {
+    this.cancion = cancion;
+  }
+
+  eliminaEstadoPlay(): void {
+    for (let cancion of this.datos) {
+      if (cancion.reproduciendo) cancion.reproduciendo = false;
+    }
   }
 }

@@ -37,10 +37,16 @@
       "
       (mouseover)="cancion.showPlayOpt = true"
       (mouseleave)="cancion.showPlayOpt = false"
+      (dblclick)="eliminaEstadoPlay()"
+      (dblclick)="cancion.reproduciendo = true"
+      (dblclick)="reproducir(cancion)"
+      [ngClass]="cancion.reproduciendo ? 'play' : 'queue'"
     >
       <th scope="row">
-        <span *ngIf="!cancion.showPlayOpt">{{ i + 1 }}</span>
-        <span *ngIf="cancion.showPlayOpt">></span>
+        <span *ngIf="!cancion.showPlayOpt && !cancion.reproduciendo">{{
+          i + 1
+        }}</span>
+        <span *ngIf="cancion.showPlayOpt || cancion.reproduciendo">></span>
       </th>
       <td>
         {{ cancion.name }}
@@ -58,3 +64,4 @@
     </tr>
   </tbody>
 </table>
+<app-reproductor [cancion]="cancion"></app-reproductor>

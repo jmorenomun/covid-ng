@@ -7,13 +7,15 @@ import { CancionComponent } from './components/cancion/cancion.component';
 import { CancionesComponent } from './components/canciones/canciones.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FormsModule } from '@angular/forms';
+import { ReproductorComponent } from './components/reproductor/reproductor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CancionComponent,
     CancionesComponent,
-    FiltroPipe
+    FiltroPipe,
+    ReproductorComponent
   ],
   imports: [
     BrowserModule,

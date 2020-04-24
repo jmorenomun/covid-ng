@@ -13,4 +13,5 @@ export interface Cancion {
   artworkUrl: string;
   genres: any;
   url: string;
+  reproduciendo?: boolean;
 }
