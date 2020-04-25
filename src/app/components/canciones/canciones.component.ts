@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import listaCanciones from '../../../assets/canciones.json';
 import { Cancion } from '../../models/Cancion';
+import { CancionService } from '../../cancion.service'
 
 @Component({
   selector: 'app-canciones',
@@ -14,13 +14,15 @@ export class CancionesComponent implements OnInit {
 
   @Output() cancionSeleccionada = new EventEmitter<Cancion>();
 
-  datos: Cancion[] = listaCanciones;
+  datos: Cancion[];
 
   // Estados
   cargado: boolean;
   detalles: boolean = false;
 
-  constructor() {}
+  constructor(private cancionService:CancionService) {
+    this.datos = cancionService.getCanciones();
+  }
 
   cancionFiltrada = '';
 
