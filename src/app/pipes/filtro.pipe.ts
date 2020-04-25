@@ -8,7 +8,8 @@ export class FiltroPipe implements PipeTransform {
     if (arg === '' || arg.length < 3) return value;
     const resulCancion = [];
     for (const cancion of value) {
-      if (cancion.name.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      if (cancion.name.toLowerCase().indexOf(arg.toLowerCase()) > -1 ||
+      cancion.artistName.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
         resulCancion.push(cancion);
       }
     }
