@@ -1,4 +1,16 @@
 <figure>
   <img src="{{ cancion?.artworkUrl }}" alt="" />
-  <audio autoplay controls src="{{ cancion?.url }}"></audio>
+  <div>
+    <p>{{ cancion?.name }}</p>
+    <p>{{ cancion?.collectionName }}</p>
+  </div>
+  <audio
+    id="audio"
+    autoplay
+    controls
+    src="{{ cancion?.url }}"
+    (pause)="cancion.reproduciendo = false"
+    (play)="cancion.reproduciendo = true"
+    (ended)="cancion.reproduciendo = false"
+  ></audio>
 </figure>

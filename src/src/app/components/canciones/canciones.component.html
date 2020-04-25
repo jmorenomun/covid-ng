@@ -1,0 +1,66 @@
+<h2>Filtro canciones</h2>
+<input
+  type="text"
+  name="filtroCanciones"
+  placeholder="Buscar..."
+  [(ngModel)]="cancionFiltrada"
+/>
+<p *ngIf="canciones | filtro: cancionFiltrada">
+  {{ (canciones | filtro: cancionFiltrada).length }} canciones
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Canción</th>
+      <th>Artista</th>
+      <th>Duración</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- No hay canciones -->
+    <tr *ngIf="(canciones | filtro: cancionFiltrada)?.length === 0">
+      <td colspan="5">No hay canciones con el título {{ cancionFiltrada }}</td>
+    </tr>
+
+    <!-- Cargando canciones -->
+    <tr *ngIf="!cargado">
+      <td colspan="5">Cargando canciones...</td>
+    </tr>
+    <tr
+      *ngFor="
+        let cancion of canciones | filtro: cancionFiltrada;
+        let i = index;
+        first as isFirst
+      "
+      (mouseover)="cancion.showPlayOpt = true"
+      (mouseleave)="cancion.showPlayOpt = false"
+      (dblclick)="eliminaEstadoPlay()"
+      (dblclick)="cancion.reproduciendo = true"
+      (dblclick)="reproducir(cancion)"
+      [ngClass]="cancion.reproduciendo ? 'play' : 'queue'"
+    >
+      <th scope="row">
+        <span *ngIf="!cancion.showPlayOpt && !cancion.reproduciendo">{{
+          i + 1
+        }}</span>
+        <span *ngIf="cancion.showPlayOpt || cancion.reproduciendo">></span>
+      </th>
+      <td>
+        {{ cancion.name }}
+        <span
+          class="badge badge-secondary ml-2"
+          *ngIf="cancion.contentAdvisoryRating"
+          >E</span
+        >
+      </td>
+      <td>{{ cancion.artistName }}</td>
+      <td>
+        {{ cancion.duration | date: "mm:ss" }}
+      </td>
+      <td (click)="mostrarDetalles(cancion)" style="cursor: pointer;">+</td>
+    </tr>
+  </tbody>
+</table>
