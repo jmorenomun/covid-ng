@@ -10,9 +10,9 @@ import { CancionService } from '../../cancion.service';
 export class CancionesComponent implements OnInit {
   // Propiedades
   canciones: Cancion[];
-  cancion: Cancion;
 
   @Output() cancionSeleccionada = new EventEmitter<Cancion>();
+  @Output() cancion = new EventEmitter<Cancion>();
 
   datos: Cancion[];
 
@@ -48,7 +48,7 @@ export class CancionesComponent implements OnInit {
   }
 
   reproducir(cancion: Cancion) {
-    this.cancion = cancion;
+    this.cancion.emit(cancion);
   }
 
   eliminaEstadoPlay(): void {
