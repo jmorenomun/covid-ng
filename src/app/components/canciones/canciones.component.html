@@ -1,10 +1,12 @@
 <h2>Filtro canciones</h2>
-<input
+<mat-form-field>
+  <input matInput
   type="text"
   name="filtroCanciones"
   placeholder="Buscar..."
-  [(ngModel)]="cancionFiltrada"
-/>
+  [(ngModel)]="cancionFiltrada"/>
+</mat-form-field>
+
 <p *ngIf="canciones | filtro: cancionFiltrada">
   {{ (canciones | filtro: cancionFiltrada).length }} canciones
 </p>

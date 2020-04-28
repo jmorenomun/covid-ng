@@ -8,6 +8,11 @@ import { CancionesComponent } from './components/canciones/canciones.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Angular Material
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +25,9 @@ import { ReproductorComponent } from './components/reproductor/reproductor.compo
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
