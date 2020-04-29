@@ -1,8 +1,14 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Cancion } from '../../models/Cancion';
 import { CancionService } from '../../cancion.service';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-canciones',
@@ -10,17 +16,19 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./canciones.component.css'],
 })
 export class CancionesComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Cancion>(listaCanciones);
+  datos: Cancion[];
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = new MatTableDataSource<Cancion>(this.datos);
+
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
   // Propiedades
   canciones: Cancion[];
 
+  // Output
   @Output() cancionSeleccionada = new EventEmitter<Cancion>();
   @Output() cancion = new EventEmitter<Cancion>();
-
-  datos: Cancion[];
 
   // Estados
   cargado: boolean;
