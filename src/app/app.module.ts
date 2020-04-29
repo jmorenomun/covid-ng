@@ -12,7 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //Angular Material
 import { MatInputModule } from '@angular/material/input';
-
+import { UiTablaComponent } from './components/ui-tabla/ui-tabla.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { MatInputModule } from '@angular/material/input';
     CancionComponent,
     CancionesComponent,
     FiltroPipe,
-    ReproductorComponent
+    ReproductorComponent,
+    UiTablaComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,8 +32,11 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

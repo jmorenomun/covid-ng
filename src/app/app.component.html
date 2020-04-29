@@ -2,7 +2,9 @@
   (cancionSeleccionada)="mostrarDetalles($event)"
   (cancion)="reproducir($event)"
 ></app-canciones>
+<app-ui-tabla></app-ui-tabla>
 <app-reproductor [cancion]="cancion"></app-reproductor>
+
 <app-cancion
   *ngIf="cancionSeleccionada"
   [cancion]="cancionSeleccionada"

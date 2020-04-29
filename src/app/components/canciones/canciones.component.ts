@@ -7,8 +7,6 @@ import {
 } from '@angular/core';
 import { Cancion } from '../../models/Cancion';
 import { CancionService } from '../../cancion.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-canciones',
@@ -17,11 +15,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class CancionesComponent implements OnInit {
   datos: Cancion[];
-
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Cancion>(this.datos);
-
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   // Propiedades
   canciones: Cancion[];
@@ -41,7 +34,6 @@ export class CancionesComponent implements OnInit {
   cancionFiltrada = '';
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
     this.cargado = false;
     this.mostrarTodas();
     this.cargado = true;
