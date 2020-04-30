@@ -1,10 +1,15 @@
 <h2>Filtro canciones</h2>
 <mat-form-field>
-  <input matInput
-  type="text"
-  name="filtroCanciones"
-  placeholder="Escribe al menos 3 caracteres..."
-  [(ngModel)]="cancionFiltrada"/>
+  <input
+    matInput
+    type="text"
+    name="filtroCanciones"
+    placeholder="Buscar..."
+    [(ngModel)]="cancionFiltrada"
+    (focus)="muestraHint = !muestraHint"
+    (blur)="muestraHint = !muestraHint"
+  />
+  <mat-hint *ngIf="muestraHint">Introduce al menos 3 carácteres</mat-hint>
 </mat-form-field>
 
 <p *ngIf="canciones | filtro: cancionFiltrada">
@@ -19,11 +24,12 @@
     matSort
     aria-label="Elements"
   >
-
     <!-- No hay canciones -->
     <ng-container>
       <tr *ngIf="(canciones | filtro: cancionFiltrada)?.length === 0">
-        <td colspan="5">No hay canciones con el título {{ cancionFiltrada }}</td>
+        <td colspan="5">
+          No hay canciones con el título {{ cancionFiltrada }}
+        </td>
       </tr>
     </ng-container>
 
@@ -36,32 +42,30 @@
 
     <!-- Columna posicion -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
-      <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+      <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
     </ng-container>
 
     <!-- Columna Canción -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Canción </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Canción</th>
+      <td mat-cell *matCellDef="let row">{{ row.name }}</td>
     </ng-container>
 
     <!-- Columna Álbum -->
     <ng-container matColumnDef="collectionName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Álbum </th>
-      <td mat-cell *matCellDef="let row"> {{row.collectionName}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Álbum</th>
+      <td mat-cell *matCellDef="let row">{{ row.collectionName }}</td>
     </ng-container>
 
     <!-- Columna Duración -->
     <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duración </th>
-      <td mat-cell *matCellDef="let row"> {{row.duration | date: "mm:ss"}} </td>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Duración</th>
+      <td mat-cell *matCellDef="let row">{{ row.duration | date: "mm:ss" }}</td>
     </ng-container>
-
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
   </table>
 
   <mat-paginator
@@ -69,6 +73,7 @@
     [length]="dataSource?.data.length"
     [pageIndex]="0"
     [pageSize]="50"
-    [pageSizeOptions]="[25, 50, 100, 250]">
+    [pageSizeOptions]="[25, 50, 100, 250]"
+  >
   </mat-paginator>
 </div>

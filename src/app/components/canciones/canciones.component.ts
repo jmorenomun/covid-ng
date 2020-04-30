@@ -5,24 +5,24 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Cancion } from '../../models/Cancion';
-import { CancionService } from '../../cancion.service';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Cancion } from '../../models/Cancion';
+import { CancionService } from '../../cancion.service';
 
 @Component({
   selector: 'app-canciones',
   templateUrl: './canciones.component.html',
   styleUrls: ['./canciones.component.css'],
-  providers: [CancionService]
+  providers: [CancionService],
 })
 export class CancionesComponent implements OnInit {
-  @ViewChild(MatPaginatorModule) paginator: MatPaginatorModule;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   datos: Cancion[]; //data y datos son lo mismo???
-  dataSource: MatTableDataSource<any>;
+  dataSource: MatTableDataSource<Cancion>;
 
   displayedColumns: string[] = ['id', 'name', 'collectionName', 'duration'];
 
@@ -36,8 +36,9 @@ export class CancionesComponent implements OnInit {
   // Estados
   cargado: boolean;
   detalles: boolean = false;
+  muestraHint: boolean = false;
 
-  constructor(private cancionService: CancionService) { }
+  constructor(private cancionService: CancionService) {}
 
   cancionFiltrada = '';
 
@@ -47,7 +48,6 @@ export class CancionesComponent implements OnInit {
     );
     this.sort = this.dataSource.sort;
     this.cargado = false;
-    this.mostrarTodas();
     this.cargado = true;
   }
 
@@ -58,13 +58,13 @@ export class CancionesComponent implements OnInit {
   }
 
   // Lista todas las canciones
-  mostrarTodas(): void {
-    this.canciones = this.datos.filter((cancion) => {
-      if (cancion) {
-        return cancion;
-      }
-    });
-  }
+  // mostrarTodas(): void {
+  //   this.canciones = this.dataSource.filter((cancion) => {
+  //     if (cancion) {
+  //       return cancion;
+  //     }
+  //   });
+  // }
 
   reproducir(cancion: Cancion) {
     this.cancion.emit(cancion);

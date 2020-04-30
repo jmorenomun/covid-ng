@@ -10,12 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 //Angular Material
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -23,19 +22,19 @@ import { MatTableDataSource } from '@angular/material/table';
     CancionComponent,
     CancionesComponent,
     FiltroPipe,
-    ReproductorComponent
+    ReproductorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
     MatPaginatorModule,
-    MatSort,
-    MatTableDataSource
+    MatSortModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
