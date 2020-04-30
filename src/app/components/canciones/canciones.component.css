@@ -10,4 +10,11 @@
 
 .full-width-table {
   width: 100%;
+  border-top: solid 1px rgba(0, 0, 0, 0.12);
+}
+.top-bar {
+  width: 100%;
+  height: 70px;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.12);
+  margin: 0 0 50px;
 }
