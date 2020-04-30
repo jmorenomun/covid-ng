@@ -7,21 +7,24 @@ import {
 } from '@angular/core';
 import { Cancion } from '../../models/Cancion';
 import { CancionService } from '../../cancion.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-canciones',
   templateUrl: './canciones.component.html',
   styleUrls: ['./canciones.component.css'],
+  providers: [CancionService]
 })
 export class CancionesComponent implements OnInit {
-  datos: Cancion[];
+  @ViewChild(MatPaginatorModule) paginator: MatPaginatorModule;
+  @ViewChild(MatSort) sort: MatSort;
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Cancion>(this.datos);
+  datos: Cancion[]; //data y datos son lo mismo???
+  dataSource: MatTableDataSource<any>;
 
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  displayedColumns: string[] = ['id', 'name', 'collectionName', 'duration'];
 
   // Propiedades
   canciones: Cancion[];
@@ -34,14 +37,15 @@ export class CancionesComponent implements OnInit {
   cargado: boolean;
   detalles: boolean = false;
 
-  constructor(private cancionService: CancionService) {
-    this.datos = cancionService.getCanciones();
-  }
+  constructor(private cancionService: CancionService) { }
 
   cancionFiltrada = '';
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
+    this.dataSource = new MatTableDataSource(
+      this.cancionService.getCanciones()
+    );
+    this.sort = this.dataSource.sort;
     this.cargado = false;
     this.mostrarTodas();
     this.cargado = true;

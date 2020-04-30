@@ -3,7 +3,7 @@
   <input matInput
   type="text"
   name="filtroCanciones"
-  placeholder="Buscar..."
+  placeholder="Escribe al menos 3 caracteres..."
   [(ngModel)]="cancionFiltrada"/>
 </mat-form-field>
 
@@ -11,60 +11,64 @@
   {{ (canciones | filtro: cancionFiltrada).length }} canciones
 </p>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Canción</th>
-      <th>Artista</th>
-      <th>Duración</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="mat-elevation-z8">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="full-width-table"
+    matSort
+    aria-label="Elements"
+  >
+
     <!-- No hay canciones -->
-    <tr *ngIf="(canciones | filtro: cancionFiltrada)?.length === 0">
-      <td colspan="5">No hay canciones con el título {{ cancionFiltrada }}</td>
-    </tr>
+    <ng-container>
+      <tr *ngIf="(canciones | filtro: cancionFiltrada)?.length === 0">
+        <td colspan="5">No hay canciones con el título {{ cancionFiltrada }}</td>
+      </tr>
+    </ng-container>
 
     <!-- Cargando canciones -->
-    <tr *ngIf="!cargado">
-      <td colspan="5">Cargando canciones...</td>
-    </tr>
-    <tr
-      *ngFor="
-        let cancion of canciones | filtro: cancionFiltrada;
-        let i = index;
-        first as isFirst
-      "
-      (mouseover)="cancion.showPlayOpt = true"
-      (mouseleave)="cancion.showPlayOpt = false"
-      (dblclick)="eliminaEstadoPlay()"
-      (dblclick)="cancion.reproduciendo = true"
-      (dblclick)="reproducir(cancion)"
-      [ngClass]="cancion.reproduciendo ? 'play' : 'queue'"
-    >
-      <th scope="row">
-        <span *ngIf="!cancion.showPlayOpt && !cancion.reproduciendo">{{
-          i + 1
-        }}</span>
-        <span *ngIf="cancion.showPlayOpt || cancion.reproduciendo">></span>
-      </th>
-      <td>
-        {{ cancion.name }}
-        <span
-          class="badge badge-secondary ml-2"
-          *ngIf="cancion.contentAdvisoryRating"
-          >E</span
-        >
-      </td>
-      <td>{{ cancion.artistName }}</td>
-      <td>
-        {{ cancion.duration | date: "mm:ss" }}
-      </td>
-      <td (click)="mostrarDetalles(cancion)" style="cursor: pointer;">+</td>
-    </tr>
-  </tbody>
-</table>
+    <ng-container>
+      <tr *ngIf="!cargado">
+        <td colspan="5">Cargando canciones...</td>
+      </tr>
+    </ng-container>
 
-<!-- ñlakdjsfñlasdjfñlasjdf -->
+    <!-- Columna posicion -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> # </th>
+      <td mat-cell *matCellDef="let row; let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <!-- Columna Canción -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Canción </th>
+      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+    </ng-container>
+
+    <!-- Columna Álbum -->
+    <ng-container matColumnDef="collectionName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Álbum </th>
+      <td mat-cell *matCellDef="let row"> {{row.collectionName}} </td>
+    </ng-container>
+
+    <!-- Columna Duración -->
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duración </th>
+      <td mat-cell *matCellDef="let row"> {{row.duration | date: "mm:ss"}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+  <mat-paginator
+    #paginator
+    [length]="dataSource?.data.length"
+    [pageIndex]="0"
+    [pageSize]="50"
+    [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>

@@ -10,9 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Angular Material
-import { MatInputModule } from '@angular/material/input';
 
+//Angular Material
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { MatInputModule } from '@angular/material/input';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSort,
+    MatTableDataSource
   ],
   providers: [],
   bootstrap: [AppComponent]
