@@ -46,6 +46,7 @@ export class CancionesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(
       this.cancionService.getCanciones()
     );
+
     this.sort = this.dataSource.sort;
     this.cargado = false;
     this.cargado = true;
