@@ -5,31 +5,32 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Cancion } from '../../models/Cancion';
 import { CancionService } from '../../cancion.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
+
 
 @Component({
   selector: 'app-canciones',
   templateUrl: './canciones.component.html',
   styleUrls: ['./canciones.component.css'],
-  providers: [CancionService],
+  providers: [CancionService]
 })
 export class CancionesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
-  datos: Cancion[]; //data y datos son lo mismo???
+  datos: Cancion[];
   dataSource: MatTableDataSource<Cancion>;
 
   displayedColumns: string[] = ['id', 'name', 'collectionName', 'duration'];
+  //¿este array son los atributos que vamos a leer del json? ¿por qué está id y no está artistName?
+
 
   // Propiedades
   canciones: Cancion[];
 
-  // Output
+  //Outputs
   @Output() cancionSeleccionada = new EventEmitter<Cancion>();
   @Output() cancion = new EventEmitter<Cancion>();
 
@@ -38,7 +39,7 @@ export class CancionesComponent implements OnInit {
   detalles: boolean = false;
   muestraHint: boolean = false;
 
-  constructor(private cancionService: CancionService) {}
+  constructor(private cancionService: CancionService) { }
 
   cancionFiltrada = '';
 
@@ -46,8 +47,6 @@ export class CancionesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(
       this.cancionService.getCanciones()
     );
-
-    this.sort = this.dataSource.sort;
     this.cargado = false;
     this.cargado = true;
   }
@@ -57,15 +56,6 @@ export class CancionesComponent implements OnInit {
     this.cancionSeleccionada.emit(cancion);
     this.detalles = true;
   }
-
-  // Lista todas las canciones
-  // mostrarTodas(): void {
-  //   this.canciones = this.dataSource.filter((cancion) => {
-  //     if (cancion) {
-  //       return cancion;
-  //     }
-  //   });
-  // }
 
   reproducir(cancion: Cancion) {
     this.cancion.emit(cancion);

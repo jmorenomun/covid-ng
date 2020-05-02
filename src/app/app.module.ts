@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { MatSortModule } from '@angular/material/sort';
     CancionComponent,
     CancionesComponent,
     FiltroPipe,
-    ReproductorComponent,
+    ReproductorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +30,9 @@ import { MatSortModule } from '@angular/material/sort';
     BrowserAnimationsModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
