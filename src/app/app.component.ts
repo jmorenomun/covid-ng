@@ -8,9 +8,15 @@ import { Cancion } from './models/Cancion';
 export class AppComponent {
   title = 'AA1';
   cancionSeleccionada?: Cancion;
+  cancion?: Cancion;
 
   // Muestra detalles
   mostrarDetalles(cancion) {
     this.cancionSeleccionada = cancion;
+  }
+
+  // Reproduce cancion
+  reproducir(cancion) {
+    this.cancion = cancion;
   }
 }

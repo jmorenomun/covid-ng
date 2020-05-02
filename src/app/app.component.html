@@ -1,5 +1,19 @@
-<app-canciones (cancionSeleccionada)="mostrarDetalles($event)"></app-canciones>
-<app-cancion
-  *ngIf="cancionSeleccionada"
-  [cancion]="cancionSeleccionada"
-></app-cancion>
+<main>
+  <div class="list">
+    <app-canciones
+      (cancionSeleccionada)="mostrarDetalles($event)"
+      (cancion)="reproducir($event)"
+    ></app-canciones>
+  </div>
+
+  <div class="sidebar">
+    <app-cancion
+      *ngIf="cancionSeleccionada"
+      [cancion]="cancionSeleccionada"
+    ></app-cancion>
+  </div>
+
+  <div class="player-container">
+    <app-reproductor [cancion]="cancion"></app-reproductor>
+  </div>
+</main>
