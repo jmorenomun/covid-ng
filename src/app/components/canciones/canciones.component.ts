@@ -39,8 +39,10 @@ export class CancionesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cargado = true;
     this.dataSource = new MatTableDataSource(this.datos);
+  }
+
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
