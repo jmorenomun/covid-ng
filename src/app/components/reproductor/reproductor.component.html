@@ -1,20 +1,3 @@
-<!-- <figure>
-  <img src="{{ cancion?.artworkUrl }}" alt="" />
-  <div>
-    <p>{{ cancion?.name }}</p>
-    <p>{{ cancion?.collectionName }}</p>
-  </div>
-  <audio
-    id="audio"
-    autoplay
-    controls
-    src="{{ cancion?.url }}"
-    (pause)="cancion.reproduciendo = false"
-    (play)="cancion.reproduciendo = true"
-    (ended)="cancion.reproduciendo = false"
-  ></audio>
-</figure> -->
-
 <div class="audio-container">
   <!-- Controles -->
   <div class="controls">
@@ -46,16 +29,18 @@
       <mat-icon class="next">skip_next</mat-icon>
     </button>
   </div>
-
+  <!-- Time slider -->
   <div class="time">
     <div class="title">
       <p *ngIf="cancion">{{ cancion?.name }} - {{ cancion?.collectionName }}</p>
     </div>
     <div class="time-controls">
-      <span *ngIf="cancion" class="current-time">{{
+      <span *ngIf="state?.readableCurrentTime" class="current-time">{{
         state?.readableCurrentTime
       }}</span>
-      <span *ngIf="!cancion" class="current-time">00:00</span>
+      <span *ngIf="!state?.readableCurrentTime" class="current-time"
+        >00:00</span
+      >
       <mat-slider
         class="time-slider"
         min="0"
@@ -65,12 +50,13 @@
         (input)="onSliderChangeEnd($event)"
         [disabled]="state?.error"
       ></mat-slider>
-      <span *ngIf="!cancion" class="current-time">00:00</span>
-      <span *ngIf="cancion" class="total-time">{{
+      <span *ngIf="!state?.readableDuration" class="total-time">00:00</span>
+      <span *ngIf="state?.readableDuration" class="total-time">{{
         state?.readableDuration
       }}</span>
     </div>
   </div>
+  <!-- Cover -->
   <div class="meta">
     <div class="art"><img src="{{ cancion?.artworkUrl }}" alt="" /></div>
   </div>

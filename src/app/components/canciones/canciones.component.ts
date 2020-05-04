@@ -22,10 +22,9 @@ export class CancionesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   // Propiedades
-  datos: Cancion[];
-  canciones: Cancion[];
-  currentFile;
-  dataSource: MatTableDataSource<Cancion>;
+  cancionActual: number;
+  canciones: any[];
+  dataSource: MatTableDataSource<any>;
   displayedColumns = ['id', 'name', 'collectionName', 'duration', 'more'];
 
   // Output
@@ -45,6 +44,7 @@ export class CancionesComponent implements OnInit {
 
   ngOnInit() {
     this.cancionService.getCanciones().subscribe((data) => {
+      this.canciones = data;
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -64,15 +64,12 @@ export class CancionesComponent implements OnInit {
 
   // Reproducir
   reproducir(cancion: Cancion) {
-    this.cancion.emit(cancion);
-  }
+    this.cancionService.cancionId.next(cancion.id);
 
-  // Elimina estado play de objeto cancion
-  eliminaEstadoPlay(index): void {
-    this.cancionService.getCanciones().subscribe((data) => {
-      if (data[index].reproduciendo) {
-        data[index].reproduciendo = false;
-      }
+    this.cancionService.cancionId.subscribe((id) => {
+      this.cancionActual = id;
     });
+
+    this.cancion.emit(cancion);
   }
 }

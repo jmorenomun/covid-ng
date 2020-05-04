@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import * as moment from 'moment';
+import moment from 'moment';
 import { StreamState } from '../models/StreamState';
 
 @Injectable({
@@ -80,11 +80,10 @@ export class AudioService {
     this.audioObj.currentTime = seconds;
   }
 
-  formatTime(time: number, format: string = 'HH:mm:ss') {
-    // const momentTime = time * 1000;
-    const momentTime = '00:30';
-    // return moment.utc(momentTime).format(format);
-    return momentTime;
+  formatTime(time: number, format: string = 'mm:ss') {
+    const momentTime = time * 1000;
+    // const momentTime = '00:30';
+    return moment.utc(momentTime).format(format);
   }
 
   private state: StreamState = {

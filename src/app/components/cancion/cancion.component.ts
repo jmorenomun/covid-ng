@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cancion } from '../../models/Cancion';
+import { CancionService } from '../../services/cancion.service';
 
 @Component({
   selector: 'app-cancion',
@@ -8,8 +9,14 @@ import { Cancion } from '../../models/Cancion';
 })
 export class CancionComponent implements OnInit {
   @Input() cancion: Cancion;
+  defaultData: any;
+  cancionActual: number;
 
-  constructor() {}
+  constructor(private cancionService: CancionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cancionService.getCanciones().subscribe((data) => {
+      this.defaultData = data;
+    });
+  }
 }

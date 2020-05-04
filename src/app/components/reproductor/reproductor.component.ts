@@ -11,6 +11,7 @@ import { StreamState } from '../../models/StreamState';
 })
 export class ReproductorComponent implements OnInit {
   @Input() cancion: any;
+  @Input() primerCancion: any;
 
   canciones: Cancion[];
   state: StreamState;
@@ -18,25 +19,28 @@ export class ReproductorComponent implements OnInit {
   constructor(
     public audioService: AudioService,
     public cancionService: CancionService
-  ) {}
-
-  ngOnInit(): void {
-    // Cargar datos json
-    this.cancionService.getCanciones().subscribe((canciones) => {
-      this.canciones = canciones;
+  ) {
+    // listen to stream state
+    this.audioService.getState().subscribe((state) => {
+      this.state = state;
     });
-
     // listen to stream state
     this.audioService.getState().subscribe((state) => {
       this.state = state;
     });
   }
 
+  ngOnInit(): void {
+    // Cargar datos json
+    this.cancionService.getCanciones().subscribe((canciones) => {
+      this.canciones = canciones;
+    });
+  }
+
   // On Change
   ngOnChanges() {
     if (this.cancion) {
-      this.playStream(this.cancion.url);
-      // this.cancionActual = this.cancion;
+      this.reproducirCancion(this.cancion.id);
     }
   }
 
@@ -65,11 +69,13 @@ export class ReproductorComponent implements OnInit {
   previous() {
     const id = this.cancion.id - 1;
     this.reproducirCancion(id);
+    this.cancionService.cancionId.next(id);
   }
 
   next() {
     const id = this.cancion.id + 1;
     this.reproducirCancion(id);
+    this.cancionService.cancionId.next(id);
   }
 
   isFirstPlaying() {

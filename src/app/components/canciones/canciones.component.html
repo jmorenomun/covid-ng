@@ -13,6 +13,18 @@
 </div>
 
 <div class="container-canciones">
+  <mat-card class="details-card mat-elevation-z0">
+    <mat-card-header>
+      <mat-card-title>NgCovid Playlist</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ canciones?.length }} canciones</p>
+      <button mat-button (click)="reproducir(canciones[0])">
+        <mat-icon>play_circle_outline</mat-icon>
+        escuchar
+      </button>
+    </mat-card-content>
+  </mat-card>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -36,13 +48,13 @@
 
     <!-- Columna posicion -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>#</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
       <td mat-cell *matCellDef="let cancion">
-        <span *ngIf="!cancion.muestraPlay && !cancion.reproduciendo">{{
+        <span *ngIf="!cancion.muestraPlay && cancionActual != cancion.id">{{
           cancion.id
         }}</span>
         <span
-          *ngIf="cancion.muestraPlay || cancion.reproduciendo"
+          *ngIf="cancion.muestraPlay || cancionActual === cancion.id"
           class="material-icons play-icon"
           >play_circle_filled</span
         >
@@ -55,8 +67,6 @@
       <td
         mat-cell
         *matCellDef="let cancion; let i = index"
-        (click)="eliminaEstadoPlay(i)"
-        (click)="cancion.reproduciendo = true"
         (click)="reproducir(cancion)"
       >
         {{ cancion.name }}
@@ -73,12 +83,10 @@
 
     <!-- Columna Álbum -->
     <ng-container matColumnDef="collectionName">
-      <th mat-header-cell *matHeaderCellDef>ÁLBUM</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ÁLBUM</th>
       <td
         mat-cell
         *matCellDef="let cancion; let i = index"
-        (click)="eliminaEstadoPlay(i)"
-        (click)="cancion.reproduciendo = true"
         (click)="reproducir(cancion)"
       >
         {{ cancion.collectionName }}
@@ -91,8 +99,6 @@
       <td
         mat-cell
         *matCellDef="let cancion; let i = index"
-        (click)="eliminaEstadoPlay(i)"
-        (click)="cancion.reproduciendo = true"
         (click)="reproducir(cancion)"
       >
         {{ cancion.duration | date: "mm:ss" }}
@@ -109,7 +115,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
-      [ngClass]="cancion?.reproduciendo ? 'play' : 'queue'"
+      [ngClass]="cancionActual === cancion.id ? 'play' : 'queue'"
       mat-row
       *matRowDef="let cancion; columns: displayedColumns"
       (mouseenter)="cancion.muestraPlay = true"
