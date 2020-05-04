@@ -1,3 +1,6 @@
+.container-canciones {
+  padding: 0 3vw;
+}
 .play .mat-cell {
   color: #6be684 !important;
 }
@@ -31,4 +34,16 @@ table th:first-child,
 
 table tr {
   cursor: pointer;
+}
+
+.explicit {
+  margin: 0 0 0 10px;
+  padding: 3px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background-color: #cacaca;
+  color: #2b2b2b;
 }

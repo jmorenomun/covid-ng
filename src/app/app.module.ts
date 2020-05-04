@@ -9,11 +9,25 @@ import { FiltroPipe } from './pipes/filtro.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
+//Services
+import { CancionService } from './services/cancion.service';
+import { AudioService } from './services/audio.service';
 
 //Angular Material
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -21,18 +35,28 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CancionComponent,
     CancionesComponent,
     FiltroPipe,
-    ReproductorComponent
+    ReproductorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatSliderModule,
+    MatDividerModule,
+    MatIconModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatCardModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [CancionService, AudioService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,84 @@
+.audio-container {
+  width: 100%;
+  background-color: #fff;
+  font-family: "Quicksand";
+  padding: 0;
+  height: 100%;
+}
+
+.controls {
+  min-width: 220px;
+  text-align: center;
+  float: left;
+  padding: 10px 0;
+}
+
+.controls button {
+  background: transparent;
+  border: 0;
+}
+
+.controls button {
+  outline: none;
+}
+
+.controls .material-icons.play,
+.controls .material-icons.pause {
+  font-size: 40px !important;
+  text-align: center;
+  width: 40px;
+}
+
+.controls .material-icons {
+  line-height: 40px;
+  height: 40px !important;
+  cursor: pointer;
+}
+
+.time {
+  width: 60vw;
+  padding: 0 20px;
+  height: 100%;
+  float: left;
+}
+
+.title {
+  float: left;
+  height: 20px;
+  width: 100%;
+  font-size: 14px;
+}
+.time-controls {
+  width: 100%;
+  float: left;
+}
+
+.current-time,
+.total-time {
+  width: 20px;
+  font-size: 12px;
+}
+
+.mat-slider {
+  width: calc(100% - 40px);
+}
+.mat-accent .mat-slider-track-fill {
+  background-color: #6be684 !important;
+}
+
+.mat-accent .mat-slider-thumb {
+  background-color: #6be684 !important;
+}
+
+.meta {
+  float: right;
+  width: 70px;
+}
+
+.art {
+  float: right;
+  padding: 5px;
+}
+.art img {
+  height: 60px;
+}

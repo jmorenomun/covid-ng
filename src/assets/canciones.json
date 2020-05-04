@@ -1,7 +1,7 @@
 [
   {
     "artistName": "Black Eyed Peas, Ozuna & J. Rey Soul",
-    "id": "1506255186",
+    "id": 1,
     "releaseDate": "2020-04-10",
     "name": "MAMACITA",
     "duration": 249142,
@@ -26,7 +26,7 @@
   },
   {
     "artistName": "Dani Martín & Juanes",
-    "id": "1504251074",
+    "id": 2,
     "name": "Los Huesos",
     "duration": 184200,
     "collectionName": "Los Huesos",
@@ -49,7 +49,7 @@
   },
   {
     "artistName": "Selena Gomez",
-    "id": "1506661711",
+    "id": 3,
     "releaseDate": "2020-04-09",
     "name": "Boyfriend",
     "duration": 144600,
@@ -73,7 +73,7 @@
   },
   {
     "artistName": "Manuel Carrasco",
-    "id": "1506780251",
+    "id": 4,
     "releaseDate": "2020-04-09",
     "name": "Prisión Esperanza",
     "duration": 149790,
@@ -101,7 +101,7 @@
   },
   {
     "artistName": "Rayden",
-    "id": "1505402927",
+    "id": 5,
     "releaseDate": "2020-04-10",
     "name": "Jarana",
     "duration": 190643,
@@ -125,7 +125,7 @@
   },
   {
     "artistName": "DORA",
-    "id": "1506231851",
+    "id": 6,
     "releaseDate": "2020-04-10",
     "name": "Stay",
     "duration": 144600,
@@ -149,7 +149,7 @@
   },
   {
     "artistName": "Charli XCX",
-    "id": "1506988317",
+    "id": 7,
     "releaseDate": "2020-04-09",
     "name": "forever",
     "duration": 144600,
@@ -173,7 +173,7 @@
   },
   {
     "artistName": "The Strokes",
-    "id": "1498121722",
+    "id": 8,
     "name": "Brooklyn Bridge to Chorus",
     "duration": 144600,
     "collectionName": "The New Abnormal",
@@ -196,7 +196,7 @@
   },
   {
     "artistName": "Paula Cendejas",
-    "id": "1505317745",
+    "id": 9,
     "releaseDate": "2020-04-10",
     "name": "Gotitas al viento (feat. Feid)",
     "duration": 144600,
@@ -224,7 +224,7 @@
   },
   {
     "artistName": "Juan Magán & Belinda",
-    "id": "1505790142",
+    "id": 10,
     "releaseDate": "2020-04-09",
     "name": "Madrid X Marbella",
     "duration": 144600,
@@ -252,7 +252,7 @@
   },
   {
     "artistName": "Agoney",
-    "id": "1506256215",
+    "id": 11,
     "releaseDate": "2020-04-09",
     "name": "Libertad",
     "duration": 144600,
@@ -280,7 +280,7 @@
   },
   {
     "artistName": "Leon Bridges",
-    "id": "1506016530",
+    "id": 12,
     "releaseDate": "2020-04-10",
     "name": "Inside Friend (feat. John Mayer)",
     "duration": 144600,
@@ -304,7 +304,7 @@
   },
   {
     "artistName": "Gorillaz",
-    "id": "1505684640",
+    "id": 13,
     "releaseDate": "2020-04-09",
     "name": "Aries (feat. Peter Hook and Georgia)",
     "duration": 144600,
@@ -328,7 +328,7 @@
   },
   {
     "artistName": "Edurne",
-    "id": "1505524897",
+    "id": 14,
     "releaseDate": "2020-04-10",
     "name": "No Te Lo Mereces",
     "duration": 144600,
@@ -352,7 +352,7 @@
   },
   {
     "artistName": "Cariño",
-    "id": "1504081583",
+    "id": 15,
     "releaseDate": "2020-04-07",
     "name": "Excusas",
     "duration": 144600,
@@ -376,7 +376,7 @@
   },
   {
     "artistName": "Smile",
-    "id": "1505534618",
+    "id": 16,
     "releaseDate": "2020-04-09",
     "name": "Una y Otra Vez",
     "duration": 144600,
@@ -404,7 +404,7 @@
   },
   {
     "artistName": "Ferran Palau",
-    "id": "1505872059",
+    "id": 17,
     "releaseDate": "2020-04-10",
     "name": "Cel clar",
     "duration": 144600,
@@ -428,7 +428,7 @@
   },
   {
     "artistName": "Flora Martinez",
-    "id": "1503877831",
+    "id": 18,
     "releaseDate": "2020-04-10",
     "name": "La Nave del Olvido",
     "duration": 144600,
@@ -456,7 +456,7 @@
   },
   {
     "artistName": "Efecto Pasillo",
-    "id": "1504880317",
+    "id": 19,
     "releaseDate": "2020-04-10",
     "name": "Similares (feat. Sinsinati)",
     "duration": 144600,
@@ -480,7 +480,7 @@
   },
   {
     "artistName": "Sidonie",
-    "id": "1504288288",
+    "id": 20,
     "releaseDate": "2020-04-10",
     "name": "Me Llamo Abba (with Kimberley Tell)",
     "duration": 144600,
@@ -504,7 +504,7 @@
   },
   {
     "artistName": "Oscar Zazo",
-    "id": "1505973614",
+    "id": 21,
     "releaseDate": "2020-04-10",
     "name": "Mi Mitad",
     "duration": 144600,
@@ -528,7 +528,7 @@
   },
   {
     "artistName": "GOMZ",
-    "id": "1504723152",
+    "id": 22,
     "releaseDate": "2020-04-10",
     "name": "Mi Rival (Stripped Version)",
     "duration": 144600,
@@ -552,7 +552,7 @@
   },
   {
     "artistName": "Siloé",
-    "id": "1505428934",
+    "id": 23,
     "releaseDate": "2020-04-08",
     "name": "Intentarlo (Sesiones en Cuarentena 2)",
     "duration": 144600,
@@ -576,7 +576,7 @@
   },
   {
     "artistName": "Alba Reche",
-    "id": "1506255852",
+    "id": 24,
     "releaseDate": "2020-04-09",
     "name": "quimera (Acústico en el Museo Reina Sofía)",
     "duration": 144600,
@@ -606,7 +606,7 @@
   },
   {
     "artistName": "Dani Fernández",
-    "id": "1504895698",
+    "id": 25,
     "releaseDate": "2020-04-10",
     "name": "Y te diré (feat. Marwan) [Acústico]",
     "duration": 144600,

@@ -1,6 +1,6 @@
 export interface Cancion {
   artistName: string;
-  id: string;
+  id: number;
   releaseDate?: string;
   name: string;
   duration?: number;

@@ -1,4 +1,4 @@
-<figure>
+<!-- <figure>
   <img src="{{ cancion?.artworkUrl }}" alt="" />
   <div>
     <p>{{ cancion?.name }}</p>
@@ -13,4 +13,65 @@
     (play)="cancion.reproduciendo = true"
     (ended)="cancion.reproduciendo = false"
   ></audio>
-</figure>
+</figure> -->
+
+<div class="audio-container">
+  <!-- Controles -->
+  <div class="controls">
+    <button
+      mat-button
+      [disabled]="!cancion || isFirstPlaying()"
+      (click)="previous()"
+    >
+      <mat-icon class="prev">skip_previous</mat-icon>
+    </button>
+    <button
+      mat-button
+      (click)="play()"
+      [disabled]="!cancion"
+      *ngIf="!state?.playing"
+    >
+      <mat-icon class="play">play_arrow</mat-icon>
+    </button>
+
+    <button mat-button (click)="pause()" *ngIf="state?.playing">
+      <mat-icon class="pause">pause</mat-icon>
+    </button>
+
+    <button
+      mat-button
+      [disabled]="!cancion || isLastPlaying()"
+      (click)="next()"
+    >
+      <mat-icon class="next">skip_next</mat-icon>
+    </button>
+  </div>
+
+  <div class="time">
+    <div class="title">
+      <p *ngIf="cancion">{{ cancion?.name }} - {{ cancion?.collectionName }}</p>
+    </div>
+    <div class="time-controls">
+      <span *ngIf="cancion" class="current-time">{{
+        state?.readableCurrentTime
+      }}</span>
+      <span *ngIf="!cancion" class="current-time">00:00</span>
+      <mat-slider
+        class="time-slider"
+        min="0"
+        [max]="state?.duration"
+        step="1"
+        [value]="state?.currentTime"
+        (input)="onSliderChangeEnd($event)"
+        [disabled]="state?.error"
+      ></mat-slider>
+      <span *ngIf="!cancion" class="current-time">00:00</span>
+      <span *ngIf="cancion" class="total-time">{{
+        state?.readableDuration
+      }}</span>
+    </div>
+  </div>
+  <div class="meta">
+    <div class="art"><img src="{{ cancion?.artworkUrl }}" alt="" /></div>
+  </div>
+</div>

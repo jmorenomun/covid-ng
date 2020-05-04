@@ -1,18 +1,22 @@
-<h1>{{ cancion.name }}</h1>
-<img src="{{ cancion.artworkUrl }}" />
-<h3>{{ cancion.collectionName }}</h3>
-<p>{{ cancion.artistName }}</p>
-<p>{{ cancion.releaseDate | date: "yyyy" }}</p>
-<p>{{ cancion.duration | date: "mm:ss" }}</p>
-<p>
-  <a *ngFor="let genre of cancion.genres; last as isLast">
-    <span
-      class="badge badge-secondary p-2"
-      [ngClass]="!isLast ? 'mr-2' : ''"
-      style="cursor: pointer;"
-      >{{ genre.name }}
-    </span>
-  </a>
-</p>
-<p *ngIf="cancion.contentAdvisoryRating">{{ cancion.contentAdvisoryRating }}</p>
-<p>{{ cancion.copyright }}</p>
+<mat-card class="details-card mat-elevation-z0">
+  <mat-card-header>
+    <mat-card-title>{{ cancion.name }}</mat-card-title>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="{{ cancion.artworkUrl }}"
+    alt="Portada del álbum {{ cancion.collectionName }}"
+  />
+  <mat-card-content>
+    <h3>{{ cancion.collectionName }}</h3>
+    <p>{{ cancion.artistName }}</p>
+    <p>{{ cancion.releaseDate | date: "yyyy" }}</p>
+    <p>{{ cancion.duration | date: "mm:ss" }}</p>
+    <mat-chip-list>
+      <mat-chip *ngFor="let genre of cancion.genres; last as isLast">
+        {{ genre.name }}
+      </mat-chip>
+    </mat-chip-list>
+    <p>{{ cancion.copyright }}</p>
+  </mat-card-content>
+</mat-card>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Cancion } from './models/Cancion';
 @Component({
   selector: 'app-root',

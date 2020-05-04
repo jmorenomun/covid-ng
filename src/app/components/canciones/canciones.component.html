@@ -35,11 +35,11 @@
     </ng-container>
 
     <!-- Columna posicion -->
-    <ng-container matColumnDef="item">
+    <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>#</th>
-      <td mat-cell *matCellDef="let cancion; let i = index">
+      <td mat-cell *matCellDef="let cancion">
         <span *ngIf="!cancion.muestraPlay && !cancion.reproduciendo">{{
-          i + 1
+          cancion.id
         }}</span>
         <span
           *ngIf="cancion.muestraPlay || cancion.reproduciendo"
@@ -51,25 +51,33 @@
 
     <!-- Columna Canción -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Canción</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CANCIÓN</th>
       <td
         mat-cell
-        *matCellDef="let cancion"
-        (click)="eliminaEstadoPlay()"
+        *matCellDef="let cancion; let i = index"
+        (click)="eliminaEstadoPlay(i)"
         (click)="cancion.reproduciendo = true"
         (click)="reproducir(cancion)"
       >
         {{ cancion.name }}
+
+        <span
+          class="explicit material-icons"
+          matTooltip="Contenido explícito"
+          *ngIf="cancion.contentAdvisoryRating"
+        >
+          priority_high
+        </span>
       </td>
     </ng-container>
 
     <!-- Columna Álbum -->
     <ng-container matColumnDef="collectionName">
-      <th mat-header-cell *matHeaderCellDef>Álbum</th>
+      <th mat-header-cell *matHeaderCellDef>ÁLBUM</th>
       <td
         mat-cell
-        *matCellDef="let cancion"
-        (click)="eliminaEstadoPlay()"
+        *matCellDef="let cancion; let i = index"
+        (click)="eliminaEstadoPlay(i)"
         (click)="cancion.reproduciendo = true"
         (click)="reproducir(cancion)"
       >
@@ -79,11 +87,11 @@
 
     <!-- Columna Duración -->
     <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef>Duración</th>
+      <th mat-header-cell *matHeaderCellDef>DURACIÓN</th>
       <td
         mat-cell
-        *matCellDef="let cancion"
-        (click)="eliminaEstadoPlay()"
+        *matCellDef="let cancion; let i = index"
+        (click)="eliminaEstadoPlay(i)"
         (click)="cancion.reproduciendo = true"
         (click)="reproducir(cancion)"
       >
