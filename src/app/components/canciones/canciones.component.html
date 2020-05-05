@@ -1,37 +1,60 @@
 <!-- Top menu con buscador -->
 <div class="top-bar">
+  <span class="material-icons">search</span>
   <mat-form-field>
-    <span class="material-icons">search</span>
     <input
       matInput
       type="text"
       name="filtroCanciones"
       placeholder="Buscar..."
       (keyup)="filtrarCanciones($event.target.value)"
+      (focus)="muestraHint = !muestraHint"
+      (blur)="muestraHint = !muestraHint"
     />
+    <mat-hint *ngIf="muestraHint">Introduce al menos 3 caracteres</mat-hint>
   </mat-form-field>
 </div>
 
 <div class="container-canciones">
   <mat-card class="details-card mat-elevation-z0">
-    <mat-card-header>
-      <mat-card-title>NgCovid Playlist</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>{{ canciones?.length }} canciones</p>
+    <div class="cabecera">
+      <mat-card-header>
+        <mat-card-title>NgCovid Playlist</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p *ngIf="!isFiltered">{{ canciones?.length }} canciones</p>
+        <p *ngIf="isFiltered">
+          {{ filteredResults }} resultado{{ filteredResults > 1 ? "s" : "" }} para
+          {{ dataSource.filter }}
+        </p>
+      </mat-card-content>
+    </div>
+    <div class="boton">
       <button mat-button (click)="reproducir(canciones[0])">
         <mat-icon>play_circle_outline</mat-icon>
-        escuchar
+        escuchar todo
       </button>
-    </mat-card-content>
+    </div>
   </mat-card>
+
+  <ngx-skeleton-loader
+    *ngIf="!cargado"
+    count="25"
+    appearance="line"
+    [theme]="{
+      'border-radius': '5px',
+      height: '50px'
+    }"
+></ngx-skeleton-loader>
+
   <table
+    *ngIf="cargado"
     mat-table
     [dataSource]="dataSource"
     class="full-width-table"
     matSort
-    aria-label="Elements"
-  >
+    aria-label="Elements">
+
     <!-- No hay canciones -->
     <ng-container>
       <tr>
@@ -48,7 +71,7 @@
 
     <!-- Columna posicion -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>#</strong></th>
       <td mat-cell *matCellDef="let cancion">
         <span *ngIf="!cancion.muestraPlay && cancionActual != cancion.id">{{
           cancion.id
@@ -63,7 +86,7 @@
 
     <!-- Columna Canción -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>CANCIÓN</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>CANCIÓN</strong></th>
       <td
         mat-cell
         *matCellDef="let cancion; let i = index"
@@ -83,7 +106,7 @@
 
     <!-- Columna Álbum -->
     <ng-container matColumnDef="collectionName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ÁLBUM</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header><strong>ÁLBUM</strong></th>
       <td
         mat-cell
         *matCellDef="let cancion; let i = index"
@@ -95,7 +118,7 @@
 
     <!-- Columna Duración -->
     <ng-container matColumnDef="duration">
-      <th mat-header-cell *matHeaderCellDef>DURACIÓN</th>
+      <th mat-header-cell *matHeaderCellDef><strong>DURACIÓN</strong></th>
       <td
         mat-cell
         *matCellDef="let cancion; let i = index"

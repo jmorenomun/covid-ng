@@ -1,5 +1,16 @@
 .details-card {
   font-family: "Quicksand";
-  position: absolute;
+  position: center;
   bottom: 0;
+}
+
+.details-card-empty{
+
+  float: left;
+  height: 100%;
+  width: calc(100% - 32px);
+  background-image: url(https://assets-ouch.icons8.com/preview/868/e83aeab7-9b81-4716-94e2-5975af355918.png);
+  background-position: center;
+  background-size: 250px;
+  background-repeat: no-repeat;
 }

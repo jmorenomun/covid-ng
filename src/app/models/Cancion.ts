@@ -8,7 +8,7 @@ export interface Cancion {
   kind: string;
   copyright: string;
   artistId: string;
-  contentAdvisoryRating?: string;
+  contentAdvisoryRating?: boolean;
   artistUrl: string;
   artworkUrl: string;
   genres: any;

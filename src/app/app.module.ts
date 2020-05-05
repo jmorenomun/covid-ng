@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 //Services
 import { CancionService } from './services/cancion.service';
@@ -55,6 +56,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatChipsModule,
     MatCardModule,
+    NgxSkeletonLoaderModule
   ],
   providers: [CancionService, AudioService],
   bootstrap: [AppComponent],

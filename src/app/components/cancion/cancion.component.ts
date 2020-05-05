@@ -11,6 +11,7 @@ export class CancionComponent implements OnInit {
   @Input() cancion: Cancion;
   defaultData: any;
   cancionActual: number;
+  edit: boolean;
 
   constructor(private cancionService: CancionService) {}
 

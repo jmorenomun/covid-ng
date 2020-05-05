@@ -8,6 +8,7 @@
     >
       <mat-icon class="prev">skip_previous</mat-icon>
     </button>
+
     <button
       mat-button
       (click)="play()"
@@ -32,7 +33,7 @@
   <!-- Time slider -->
   <div class="time">
     <div class="title">
-      <p *ngIf="cancion">{{ cancion?.name }} - {{ cancion?.collectionName }}</p>
+      <p *ngIf="cancion"><strong>{{ cancion?.name }} - {{ cancion?.collectionName }}</strong></p>
     </div>
     <div class="time-controls">
       <span *ngIf="state?.readableCurrentTime" class="current-time">{{

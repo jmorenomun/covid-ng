@@ -9,7 +9,7 @@
     "kind": "song",
     "copyright": "℗ 2020 BEP Music, LLC, under exclusive license to Epic Records, a division of Sony Music Entertainment",
     "artistId": "360391",
-    "contentAdvisoryRating": "Explicit",
+    "contentAdvisoryRating": true,
     "artistUrl": "https://music.apple.com/WebObjects/MZStore.woa/wa/viewCollaboration?cc=es&ids=360391-283578837-1506254853&app=itunes",
     "artworkUrl": "https://is2-ssl.mzstatic.com/image/thumb/Music123/v4/81/dc/5e/81dc5e66-7211-d066-0a82-386f719f22cf/886448348825.jpg/200x200bb.png",
     "genres": [

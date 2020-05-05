@@ -10,7 +10,6 @@
 .list {
   position: relative;
   margin-left: 221px;
-
   margin-bottom: 100px;
 }
 
@@ -18,6 +17,7 @@
   width: 220px;
   position: fixed;
   top: 0;
+  overflow: hidden;
   height: calc(100vh - 70px);
   border-right: solid 1px rgba(0, 0, 0, 0.12);
   background: #fff;

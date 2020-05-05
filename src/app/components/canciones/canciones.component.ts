@@ -24,6 +24,7 @@ export class CancionesComponent implements OnInit {
   // Propiedades
   cancionActual: number;
   canciones: any[];
+  filteredResults: number;
   dataSource: MatTableDataSource<any>;
   displayedColumns = ['id', 'name', 'collectionName', 'duration', 'more'];
 
@@ -34,6 +35,8 @@ export class CancionesComponent implements OnInit {
   // Estados
   cargado: boolean;
   detalles: boolean = false;
+  muestraHint: boolean = false;
+  isFiltered: boolean;
 
   constructor(
     public audioService: AudioService,
@@ -49,11 +52,19 @@ export class CancionesComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+    // Simula loader
+    setTimeout(() => {
+      if (this.dataSource.filteredData.length > 0) {
+        this.cargado = true;
+      }
+    }, 1000);
   }
 
   // Filtra
   filtrarCanciones(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.filteredResults = this.dataSource.filteredData.length;
+    this.isFiltered = (filterValue.length === 0) ? false : true;
   }
 
   // Muestra detalles
