@@ -24,10 +24,6 @@ export class ReproductorComponent implements OnInit {
     this.audioService.getState().subscribe((state) => {
       this.state = state;
     });
-    // listen to stream state
-    this.audioService.getState().subscribe((state) => {
-      this.state = state;
-    });
   }
 
   ngOnInit(): void {
@@ -41,6 +37,12 @@ export class ReproductorComponent implements OnInit {
   ngOnChanges() {
     if (this.cancion) {
       this.reproducirCancion(this.cancion.id);
+    }
+  }
+
+  ngDoCheck() {
+    if (this.state.playing && this.state.currentTime === this.state.duration) {
+      this.next();
     }
   }
 
@@ -73,7 +75,7 @@ export class ReproductorComponent implements OnInit {
   }
 
   next() {
-    const id = this.cancion.id + 1;
+    const id = this.isLastPlaying() ? 1 : this.cancion.id + 1;
     this.reproducirCancion(id);
     this.cancionService.cancionId.next(id);
   }
