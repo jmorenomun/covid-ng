@@ -4,8 +4,7 @@
   bottom: 0;
 }
 
-.details-card-empty{
-
+.details-card-empty {
   float: left;
   height: 100%;
   width: calc(100% - 32px);
@@ -13,4 +12,10 @@
   background-position: center;
   background-size: 250px;
   background-repeat: no-repeat;
+}
+
+.mat-card-header-text {
+  text-align: center;
+  margin: 0;
+  width: 100%;
 }

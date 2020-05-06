@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Cancion } from '../../models/Cancion';
 import { CancionService } from '../../services/cancion.service';
 
@@ -12,6 +12,8 @@ export class CancionComponent implements OnInit {
   defaultData: any;
   cancionActual: number;
   edit: boolean;
+  startDate: Date;
+  activeEditCancion: number;
 
   constructor(private cancionService: CancionService) {}
 
@@ -19,5 +21,28 @@ export class CancionComponent implements OnInit {
     this.cancionService.getCanciones().subscribe((data) => {
       this.defaultData = data;
     });
+  }
+
+  ngOnChanges() {
+    if (
+      this.cancion &&
+      this.activeEditCancion != 0 &&
+      this.cancion?.id != this.activeEditCancion
+    ) {
+      this.edit = false;
+    }
+  }
+
+  editCancion(cancion) {
+    this.activeEditCancion = cancion.id;
+    if (!cancion.releaseDate) {
+      this.startDate = new Date();
+    } else {
+      let releaseDate = new Date(cancion.releaseDate);
+      let day = releaseDate.getDate();
+      let month = releaseDate.getMonth();
+      let year = releaseDate.getUTCFullYear();
+      this.startDate = new Date(year, month, day);
+    }
   }
 }

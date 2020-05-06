@@ -29,6 +29,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatChipsModule,
     MatCardModule,
-    NgxSkeletonLoaderModule
+    MatDatepickerModule,
+    MatSlideToggleModule,
+    MatNativeDateModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [CancionService, AudioService],
   bootstrap: [AppComponent],

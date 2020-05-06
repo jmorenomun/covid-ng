@@ -19,7 +19,7 @@ import { AudioService } from '../../services/audio.service';
 })
 export class CancionesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   // Propiedades
   cancionActual: number;
@@ -52,19 +52,25 @@ export class CancionesComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+
     // Simula loader
     setTimeout(() => {
-      if (this.dataSource.filteredData.length > 0) {
+      if (this.dataSource.filteredData.length === this.canciones.length) {
         this.cargado = true;
       }
     }, 1000);
+  }
+
+  ngOnChanges() {
+    this.dataSource.sort = this.sort;
+    console.log(this.dataSource.sort);
   }
 
   // Filtra
   filtrarCanciones(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
     this.filteredResults = this.dataSource.filteredData.length;
-    this.isFiltered = (filterValue.length === 0) ? false : true;
+    this.isFiltered = filterValue.length === 0 ? false : true;
   }
 
   // Muestra detalles

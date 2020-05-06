@@ -7,53 +7,96 @@
   border-bottom: solid 1px rgba(0, 0, 0, 0.12);
 }
 
-    .material-icons{
-      margin: 20px;
-      border: 0;
-    }
-    .mat-form-field {
-      width: 35%;
-      min-width: 200px;
-      max-width: 500px;
-    }
-    .mat-icon{
-      margin: 0;
-    }
+.material-icons {
+  margin: 20px;
+  border: 0;
+}
+.mat-form-field {
+  width: 35%;
+  min-width: 200px;
+  max-width: 500px;
+}
+.mat-icon {
+  margin: 0;
+}
 
 .container-canciones {
   padding: 0 3vw;
   color: white 50%;
 }
-    .details-card{
-      margin: 30px 0;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background: rgba(161,245,231,1);
-        background: -moz-linear-gradient(left, rgba(161,245,231,1) 0%, rgba(124,198,213,0.99) 63%, rgba(117,189,209,0.99) 75%, rgba(73,165,191,0.98) 100%);
-        background: -webkit-gradient(left top, right top, color-stop(0%, rgba(161,245,231,1)), color-stop(63%, rgba(124,198,213,0.99)), color-stop(75%, rgba(117,189,209,0.99)), color-stop(100%, rgba(73,165,191,0.98)));
-        background: -webkit-linear-gradient(left, rgba(161,245,231,1) 0%, rgba(124,198,213,0.99) 63%, rgba(117,189,209,0.99) 75%, rgba(73,165,191,0.98) 100%);
-        background: -o-linear-gradient(left, rgba(161,245,231,1) 0%, rgba(124,198,213,0.99) 63%, rgba(117,189,209,0.99) 75%, rgba(73,165,191,0.98) 100%);
-        background: -ms-linear-gradient(left, rgba(161,245,231,1) 0%, rgba(124,198,213,0.99) 63%, rgba(117,189,209,0.99) 75%, rgba(73,165,191,0.98) 100%);
-        background: linear-gradient(to right, rgba(161,245,231,1) 0%, rgba(124,198,213,0.99) 63%, rgba(117,189,209,0.99) 75%, rgba(73,165,191,0.98) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1f5e7', endColorstr='#49a5bf', GradientType=1 );
-    }
-        .cabecera{
-          margin: 0 0 0 50px;
-        }
-            .mat-card-header{
-              color: #000000;
-            }
-            .mat-card-content{
-              color: #000000;
-              margin: 0 0 0 18px;
-            }
+.details-card {
+  margin: 30px 0;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(161, 245, 231, 1);
+  background: -moz-linear-gradient(
+    left,
+    rgba(161, 245, 231, 1) 0%,
+    rgba(124, 198, 213, 0.99) 63%,
+    rgba(117, 189, 209, 0.99) 75%,
+    rgba(73, 165, 191, 0.98) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right top,
+    color-stop(0%, rgba(161, 245, 231, 1)),
+    color-stop(63%, rgba(124, 198, 213, 0.99)),
+    color-stop(75%, rgba(117, 189, 209, 0.99)),
+    color-stop(100%, rgba(73, 165, 191, 0.98))
+  );
+  background: -webkit-linear-gradient(
+    left,
+    rgba(161, 245, 231, 1) 0%,
+    rgba(124, 198, 213, 0.99) 63%,
+    rgba(117, 189, 209, 0.99) 75%,
+    rgba(73, 165, 191, 0.98) 100%
+  );
+  background: -o-linear-gradient(
+    left,
+    rgba(161, 245, 231, 1) 0%,
+    rgba(124, 198, 213, 0.99) 63%,
+    rgba(117, 189, 209, 0.99) 75%,
+    rgba(73, 165, 191, 0.98) 100%
+  );
+  background: -ms-linear-gradient(
+    left,
+    rgba(161, 245, 231, 1) 0%,
+    rgba(124, 198, 213, 0.99) 63%,
+    rgba(117, 189, 209, 0.99) 75%,
+    rgba(73, 165, 191, 0.98) 100%
+  );
+  background: linear-gradient(
+    to right,
+    rgba(161, 245, 231, 1) 0%,
+    rgba(124, 198, 213, 0.99) 63%,
+    rgba(117, 189, 209, 0.99) 75%,
+    rgba(73, 165, 191, 0.98) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a1f5e7', endColorstr='#49a5bf', GradientType=1 );
+}
+.cabecera {
+  margin: 0 0 0 50px;
+}
+.mat-card-header,
+.mat-card-title {
+  font-size: 31px;
+  color: #000000;
+}
+.mat-card-content {
+  font-size: 14px;
+  font-family: "quicksand";
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0 0 0 18px;
+}
 
-        .boton{
-          margin: 0 0 0 30px;
-          border: solid 1px;
-          border-radius: 4px;
-        }
+.boton {
+  margin: 0 0 0 30px;
+  border: solid 1px;
+  border-radius: 4px;
+}
 
 .play .mat-cell {
   color: #6be684 !important;
@@ -65,17 +108,17 @@
 
 table th:first-child,
 .mat-cell:first-child {
-  width: 50px;
+  width: 80px;
   text-align: center;
 }
-
-
+.mat-cell:first-child {
+  width: 80px;
+}
 
 .full-width-table {
   width: 100%;
   border-top: solid 1px rgba(0, 0, 0, 0.12);
 }
-
 
 table tr {
   cursor: pointer;
