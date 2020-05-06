@@ -10,7 +10,6 @@ import { StreamState } from '../../models/StreamState';
   styleUrls: ['./reproductor.component.css'],
 })
 export class ReproductorComponent implements OnInit {
-  // @Input() cancion: any;
   @Input() primerCancion: any;
   cancion: Cancion;
   canciones: Cancion[];
@@ -24,7 +23,7 @@ export class ReproductorComponent implements OnInit {
     this.audioService.getState().subscribe((state) => {
       this.state = state;
     });
-    // listen to stream state
+    // listen to cancion actual
     this.cancionService.getCancion().subscribe((cancion) => {
       this.cancion = cancion;
     });
@@ -43,17 +42,14 @@ export class ReproductorComponent implements OnInit {
     });
   }
 
-  // Check changes
-  ngDoCheck() {
-    if (this.state.playing && this.state.currentTime === this.state.duration) {
-      setTimeout(() => {
-        this.next();
-      }, 1000);
-    }
-  }
-
   playStream(url) {
-    this.audioService.playStream(url).subscribe((events) => {});
+    this.audioService.playStream(url).subscribe((events) => {
+      if (events['type'] === 'ended') {
+        setTimeout(() => {
+          this.next();
+        }, 1000);
+      }
+    });
   }
 
   reproducirCancion(cancion) {
