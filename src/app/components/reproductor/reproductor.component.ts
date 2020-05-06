@@ -10,9 +10,9 @@ import { StreamState } from '../../models/StreamState';
   styleUrls: ['./reproductor.component.css'],
 })
 export class ReproductorComponent implements OnInit {
-  @Input() cancion: any;
+  // @Input() cancion: any;
   @Input() primerCancion: any;
-
+  cancion: Cancion;
   canciones: Cancion[];
   state: StreamState;
 
@@ -24,6 +24,10 @@ export class ReproductorComponent implements OnInit {
     this.audioService.getState().subscribe((state) => {
       this.state = state;
     });
+    // listen to stream state
+    this.cancionService.getCancion().subscribe((cancion) => {
+      this.cancion = cancion;
+    });
   }
 
   ngOnInit(): void {
@@ -31,15 +35,15 @@ export class ReproductorComponent implements OnInit {
     this.cancionService.getCanciones().subscribe((canciones) => {
       this.canciones = canciones;
     });
+
+    this.cancionService.getCancion().subscribe((cancion) => {
+      if (cancion) {
+        this.reproducirCancion(cancion);
+      }
+    });
   }
 
-  // On Change
-  ngOnChanges() {
-    if (this.cancion) {
-      this.reproducirCancion(this.cancion.id);
-    }
-  }
-
+  // Check changes
   ngDoCheck() {
     if (this.state.playing && this.state.currentTime === this.state.duration) {
       setTimeout(() => {
@@ -52,10 +56,9 @@ export class ReproductorComponent implements OnInit {
     this.audioService.playStream(url).subscribe((events) => {});
   }
 
-  reproducirCancion(id) {
-    this.cancion = this.canciones.find((cancion) => cancion.id === id);
+  reproducirCancion(cancion) {
     this.audioService.stop();
-    this.playStream(this.cancion.url);
+    this.playStream(cancion.url);
   }
 
   pause() {
@@ -72,14 +75,14 @@ export class ReproductorComponent implements OnInit {
 
   previous() {
     const id = this.cancion.id - 1;
-    this.reproducirCancion(id);
-    this.cancionService.cancionId.next(id);
+    const nextCancion = this.canciones.find((cancion) => cancion.id === id);
+    this.cancionService.setCancion(nextCancion);
   }
 
   next() {
     const id = this.isLastPlaying() ? 1 : this.cancion.id + 1;
-    this.reproducirCancion(id);
-    this.cancionService.cancionId.next(id);
+    const nextCancion = this.canciones.find((cancion) => cancion.id === id);
+    this.cancionService.setCancion(nextCancion);
   }
 
   isFirstPlaying() {

@@ -14,9 +14,4 @@ export class AppComponent {
   mostrarDetalles(cancion) {
     this.cancionSeleccionada = cancion;
   }
-
-  // Reproduce cancion
-  reproducir(cancion) {
-    this.cancion = cancion;
-  }
 }

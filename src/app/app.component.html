@@ -2,7 +2,6 @@
   <div class="list">
     <app-canciones
       (cancionSeleccionada)="mostrarDetalles($event)"
-      (cancion)="reproducir($event)"
     ></app-canciones>
   </div>
 
@@ -11,6 +10,6 @@
   </div>
 
   <div class="player-container">
-    <app-reproductor [cancion]="cancion"></app-reproductor>
+    <app-reproductor></app-reproductor>
   </div>
 </main>

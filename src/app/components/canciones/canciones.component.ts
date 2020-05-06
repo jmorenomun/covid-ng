@@ -30,7 +30,7 @@ export class CancionesComponent implements OnInit {
 
   // Output
   @Output() cancionSeleccionada = new EventEmitter<Cancion>();
-  @Output() cancion = new EventEmitter<any>();
+  // @Output() cancion = new EventEmitter<any>();
 
   // Estados
   cargado: boolean;
@@ -59,11 +59,13 @@ export class CancionesComponent implements OnInit {
         this.cargado = true;
       }
     }, 1000);
-  }
 
-  ngOnChanges() {
-    this.dataSource.sort = this.sort;
-    console.log(this.dataSource.sort);
+    // Estado play cacnion actual
+    this.cancionService.getCancion().subscribe((cancion) => {
+      if (cancion) {
+        this.cancionActual = cancion.id;
+      }
+    });
   }
 
   // Filtra
@@ -81,12 +83,7 @@ export class CancionesComponent implements OnInit {
 
   // Reproducir
   reproducir(cancion: Cancion) {
-    this.cancionService.cancionId.next(cancion.id);
-
-    this.cancionService.cancionId.subscribe((id) => {
-      this.cancionActual = id;
-    });
-
-    this.cancion.emit(cancion);
+    this.cancionService.setCancion(cancion);
+    this.cancionActual = cancion.id;
   }
 }
