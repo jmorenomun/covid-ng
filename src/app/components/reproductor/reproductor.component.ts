@@ -42,7 +42,9 @@ export class ReproductorComponent implements OnInit {
 
   ngDoCheck() {
     if (this.state.playing && this.state.currentTime === this.state.duration) {
-      this.next();
+      setTimeout(() => {
+        this.next();
+      }, 1000);
     }
   }
 
