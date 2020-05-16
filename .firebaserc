@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ngcovid-4f2eb": {
+      "hosting": {
+        "AA1": [
+          "ngcovid-4f2eb"
+        ]
+      }
+    }
+  }
+}
