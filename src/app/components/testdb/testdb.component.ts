@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, ActivatedRoute, Router } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,25 +9,21 @@ import { Observable } from 'rxjs';
 })
 
 export class TestdbComponent implements OnInit {
-  items$: Observable<AngularFireAction<firebase.database.DataSnapshot>[]>;
+  items$: AngularFireList<any[]>;
 
-  constructor() {
-    private route: ActivatedRoute,
-    private router: Router,
-    private db: AngularFireDatabase
-  }
+  constructor(private afDB: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.items$ = this.db.list("/", {
-      query: {
-        orderByChild: 'id'
-      }
-    });
+    this.items$ = this.afDB.list('/');
 
   }
 
   // Muestra detalles
   mostrarLog() {
-    console.log("Número de canciones en la db: " + this.items$.length);
+/*
+    this.items$.subscribe(value=> {
+      console.log(this.items$);
+    });
+    */
   }
 }

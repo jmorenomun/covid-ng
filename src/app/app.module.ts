@@ -11,11 +11,10 @@ import { ReproductorComponent } from './components/reproductor/reproductor.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireDatabase, ActivatedRoute, Router } from '@angular/fire/database';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 //Services
 import { CancionService } from './services/cancion.service';
@@ -37,7 +36,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
-import { TestdbComponent } from './testdb/testdb.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +44,6 @@ import { TestdbComponent } from './testdb/testdb.component';
     CancionesComponent,
     FiltroPipe,
     ReproductorComponent,
-    TestdbComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,11 +67,9 @@ import { TestdbComponent } from './testdb/testdb.component';
     MatSlideToggleModule,
     MatNativeDateModule,
     NgxSkeletonLoaderModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [CancionService, AudioService],
+  providers: [CancionService, AudioService, AngularFireDatabase],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
