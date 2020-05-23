@@ -8,6 +8,7 @@ import { CancionesComponent } from './components/canciones/canciones.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
+import { TestdbComponent } from './components/testdb/testdb.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -44,6 +45,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CancionesComponent,
     FiltroPipe,
     ReproductorComponent,
+    TestdbComponent,
   ],
   imports: [
     BrowserModule,
