@@ -8,9 +8,14 @@ import { CancionesComponent } from './components/canciones/canciones.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { FormsModule } from '@angular/forms';
 import { ReproductorComponent } from './components/reproductor/reproductor.component';
+import { TestdbComponent } from './components/testdb/testdb.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 //Services
 import { CancionService } from './services/cancion.service';
@@ -40,6 +45,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     CancionesComponent,
     FiltroPipe,
     ReproductorComponent,
+    TestdbComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,8 +69,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSlideToggleModule,
     MatNativeDateModule,
     NgxSkeletonLoaderModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
-  providers: [CancionService, AudioService],
+  providers: [CancionService, AudioService, AngularFireDatabase],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
