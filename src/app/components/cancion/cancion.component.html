@@ -41,6 +41,7 @@
     <mat-form-field class="example-full-width">
       <input
         matInput
+        #artistName
         placeholder="Nombre del artista"
         value="{{ cancion.artistName }}"
       />
@@ -60,8 +61,8 @@
     </mat-slide-toggle>
     <mat-form-field class="example-full-width">
       <mat-label>Copyright</mat-label>
-      <textarea matInput>{{ cancion.copyright }}</textarea>
+      <textarea matInput #copyright>{{ cancion.copyright }}</textarea>
     </mat-form-field>
   </mat-card-content>
-  <button mat-stroked-button (click)="edit = !edit">guardar</button>
+  <button mat-stroked-button (click)="saveCancion(artistName.value, copyright.value); edit = !edit">guardar</button>
 </mat-card>

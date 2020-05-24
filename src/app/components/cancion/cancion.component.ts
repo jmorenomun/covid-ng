@@ -45,4 +45,11 @@ export class CancionComponent implements OnInit {
       this.startDate = new Date(year, month, day);
     }
   }
+
+  saveCancion(artistName, copyright) {
+    this.cancion.artistName = artistName;
+    this.cancion.copyright = copyright;
+
+    this.cancionService.uploadSong(this.cancion);
+  }
 }

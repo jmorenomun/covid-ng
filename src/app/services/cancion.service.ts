@@ -26,6 +26,17 @@ export class CancionService {
     }));
   }
 
+  uploadSong(song: Cancion): void {
+    let ref = '/' + song.id;
+
+    console.log(ref);
+
+    this.afDB.object(ref).update({
+      artistName: song.artistName,
+      copyright: song.copyright
+    });
+  }
+
   getCancion(): Observable<any> {
     return this.cancion.asObservable();
   }

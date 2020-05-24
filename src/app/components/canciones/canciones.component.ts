@@ -51,14 +51,13 @@ export class CancionesComponent implements OnInit {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.cargado = true;
     });
 
     // Simula loader
     setTimeout(() => {
-      if (this.dataSource.filteredData.length === this.canciones.length) {
-        this.cargado = true;
-      }
-    }, 1000);
+      this.cargado = true;
+    }, 10000);
 
     // Estado play cacnion actual
     this.cancionService.getCancion().subscribe((cancion) => {
