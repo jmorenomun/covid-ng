@@ -15,11 +15,6 @@
     <p>{{ cancion.artistName }}</p>
     <p>{{ cancion.releaseDate | date: "yyyy" }}</p>
     <p>{{ cancion.duration | date: "mm:ss" }}</p>
-    <mat-chip-list>
-      <mat-chip *ngFor="let genre of cancion.genres; last as isLast">
-        {{ genre.name }}
-      </mat-chip>
-    </mat-chip-list>
     <p>{{ cancion.copyright }}</p>
   </mat-card-content>
   <button mat-stroked-button (click)="editCancion(cancion); edit = !edit">
@@ -46,23 +41,15 @@
         value="{{ cancion.artistName }}"
       />
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>{{ startDate | date: "dd/MM/yyyy" }}</mat-label>
-      <input matInput [matDatepicker]="picker" />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker
-        #picker
-        value="startDate"
-        [startAt]="startDate"
-      ></mat-datepicker>
-    </mat-form-field>
-    <mat-slide-toggle [checked]="cancion.contentAdvisoryRating">
-      Contenido Explícito
-    </mat-slide-toggle>
     <mat-form-field class="example-full-width">
       <mat-label>Copyright</mat-label>
       <textarea matInput #copyright>{{ cancion.copyright }}</textarea>
     </mat-form-field>
   </mat-card-content>
-  <button mat-stroked-button (click)="saveCancion(artistName.value, copyright.value); edit = !edit">guardar</button>
+  <button
+    mat-stroked-button
+    (click)="saveCancion(artistName.value, copyright.value); edit = !edit"
+  >
+    guardar
+  </button>
 </mat-card>
